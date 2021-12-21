@@ -1,9 +1,11 @@
 //console.log('Task Manager App')
 const express = require("express");
+require("dotenv").config({ path: "./config/config.env" });
 require("colors");
 const connectDB = require("./db/connect");
-const uri =
-  "mongodb+srv://Nsowa:1234567890@pacticdb.aqejg.mongodb.net/03-Task-Manager?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
+//console.log(uri);
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
