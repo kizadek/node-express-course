@@ -3,7 +3,7 @@ const express = require("express");
 require("colors");
 const connectDB = require("./db/connect");
 const uri =
-  "mongodb+srv://Nsowa:123456789@pacticdb.aqejg.mongodb.net/03-Task-Manager?retryWrites=true&w=majority";
+  "mongodb+srv://Nsowa:1234567890@pacticdb.aqejg.mongodb.net/03-Task-Manager?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 3000;
 
 const app = express();
