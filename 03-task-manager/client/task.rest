@@ -1,14 +1,31 @@
 GET http://localhost:3000/api/v1/tasks
 
 ###
+GET http://localhost:3000/api/v1/tasks/61e07242d81ca65c80fea7e2
 
+###
 POST http://localhost:3000/api/v1/tasks
 content-type: application/json
 
 {
-    "name": "",
-    "compreted": true
+    "name": "create a new api"
 }
+
+###
+
+PATCH  http://localhost:3000/api/v1/tasks/61e07242d81ca65c80fea7e2
+content-type: application/json
+
+{
+    "name": "create a new ",
+    "completed": false
+}
+###
+
+DELETE  http://localhost:3000/api/v1/tasks/61e082fca2e18b343c322a74
+content-type: application/json
+
+
 
 ###
 POST http://localhost:5000/api/v1/users/signup/verify
