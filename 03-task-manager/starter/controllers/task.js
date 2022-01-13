@@ -29,12 +29,14 @@ const getAllTasks = async (req, res, next) => {
 
 const createTask = async (req, res, next) => {
   try {
-    const {name,completed} = req.body
-    const savedTask = Task.create({name,completed})
+    const savedTask = await Task.create(req.body)
+    if(!savedTask) return res.status(200).json({
+      success: false,
+    })
     console.log(savedTask)
     return res.status(201).json({
       success:true,
-      msg: `task ${name} crated`,
+      msg: `task crated`,
       body: savedTask
     })
   } catch (error) {
@@ -51,8 +53,14 @@ const createTask = async (req, res, next) => {
 
 const getTask = async (req, res, next) => {
   try {
-    res.send("single task");
-  } catch (error) {}
+    const {id: taskID} = req.params;
+    const task = await Task.findOne({_id: taskID})
+    if(!task) return res.status(200).json({success: true, msg:`sorry no task was found with the provided id:${taskID}`})
+   res.json(task);
+  //  console.log(task)
+  } catch (error) {
+   console.log(`ERROR::: ${error}`)
+  }
 };
 
 /**update one task
@@ -61,8 +69,22 @@ const getTask = async (req, res, next) => {
 
 const updateTask = async (req, res, next) => {
   try {
-    res.send(req.params.id);
-  } catch (error) {}
+    const {id: taskID} = req.params
+    const data = req.body
+    const newTask = await Task.findOneAndUpdate({_id: taskID},data,{new:true})
+    if(!newTask) return res.status(200).json({success: true, msg:`no task with id: ${taskID} to update`})
+  res.status(200).json({
+    success: true,
+    newTask
+  })
+  } catch (error) {
+    console.log(`${error}`)
+    return res.status(500).json({
+      success: false,
+      msg: `sorry there was aproblem with the server try agen`
+    })
+  }
+  
 };
 
 /**delete Tasks task
@@ -71,8 +93,25 @@ const updateTask = async (req, res, next) => {
 
 const deleteTask = async (req, res, next) => {
   try {
-    res.send("task deleted");
-  } catch (error) {}
+    const {id: taskID} = req.params
+    const deleted = await Task .findOneAndDelete({_id: taskID})
+    if(!deleted) return res.status(200).json({
+      success: false,
+      msg:`sorry task with id: ${taskID} not found!`
+    })
+    console.log(deleted)
+    res.status(200).json({
+      success: true,
+      msg: `task with id: ${taskID} was deleted successfuly!`,
+      data:deleteTask
+    })
+  } catch (error) {
+    console.log(error)
+    return res.status(200).json({
+      success: false,
+      msg: `sorry there was saver error try agen `
+    })
+  }
 };
 
 module.exports = {
