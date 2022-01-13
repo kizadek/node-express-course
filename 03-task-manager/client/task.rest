@@ -1,0 +1,21 @@
+GET http://localhost:3000/api/v1/tasks
+
+###
+
+POST http://localhost:3000/api/v1/tasks
+content-type: application/json
+
+{
+    "name": "",
+    "compreted": true
+}
+
+###
+POST http://localhost:5000/api/v1/users/signup/verify
+content-type: application/json
+
+{
+    
+     "phoneNumber": "0971196736",
+    "otp": "833260"
+}
