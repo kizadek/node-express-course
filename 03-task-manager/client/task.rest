@@ -22,17 +22,6 @@ content-type: application/json
 }
 ###
 
-DELETE  http://localhost:3000/api/v1/tasks/61e23617ba0aa864ac925357
+DELETE  http://localhost:3000/api/v1/tasks/61f513db6fb2d345e89308d2
 content-type: application/json
 
-
-
-###
-POST http://localhost:5000/api/v1/users/signup/verify
-content-type: application/json
-
-{
-    
-     "phoneNumber": "0971196736",
-    "otp": "833260"
-}
