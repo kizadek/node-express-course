@@ -9,7 +9,7 @@ const {createCustomError} = require("../errors/custom-errors");
 const getAllTasks =asyncWrapper( async (req, res, next) => {
     const tasks = await Task.find({})
     console.log(tasks)
-    if(tasks.length == 0 ) return next(createCustomError ("sorry there are no tasks to show!!",200))
+    //if(tasks.length == 0 ) return next(createCustomError ("sorry there are no tasks to show!!",200))
     return res.status(200).json({success: true,tasks})
 });
 
