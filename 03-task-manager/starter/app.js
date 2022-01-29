@@ -3,7 +3,9 @@ const express = require("express");
 require("dotenv").config({ path: "./config/config.env" });
 require("colors");
 const connectDB = require("./db/connect");
+const errorHandlreMiddleware = require("./middleware/error-handler")
 const uri = process.env.MONGODB_URI;
+const morgan = require('morgan');
 //console.log(uri);
 
 const PORT = process.env.PORT || 3000;
@@ -12,13 +14,21 @@ const app = express();
 
 //set were env file is
 
-// json body passer middleware
+//middlewares
+app.use(express.static("./public"))
 app.use(express.json());
-
+app.use(morgan('dev'))
 //set logger
 
 // Mount Routes
 app.use("/api/v1/tasks", require("./routes/tasksRoutes"));
+
+
+
+// error middleware 
+app.use(errorHandlreMiddleware)
+app.use(require("./middleware/not_found"))
+
 
 // connect to mongo DB
 

@@ -1,14 +1,14 @@
 GET http://localhost:3000/api/v1/tasks
 
 ###
-GET http://localhost:3000/api/v1/tasks/61e07242d81ca65c80fea7e2
+GET http://localhost:3000/api/v1/tasks/61e53d2725b3e366acd2b816
 
 ###
-POST http://localhost:3000/api/v1/tasks
+POST http://localhost:3000/api/v1/tasks/get/evry
 content-type: application/json
 
 {
-    "name": "create a new api"
+    "name": "meet a friend"
 }
 
 ###
@@ -22,7 +22,7 @@ content-type: application/json
 }
 ###
 
-DELETE  http://localhost:3000/api/v1/tasks/61e082fca2e18b343c322a74
+DELETE  http://localhost:3000/api/v1/tasks/61e23617ba0aa864ac925357
 content-type: application/json
 
 
