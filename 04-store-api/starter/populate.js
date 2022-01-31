@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({path:'./config/config.env'})
 
 const connectDB = require("./db/connect")
 const Product = require('./models/product')
@@ -18,4 +18,4 @@ const start = async () =>{
     }
 }
 
-start() 
+start() ;

@@ -33,7 +33,7 @@ const PORT = process.env.PORT || 3000
 const start = async () =>{
     try {
         //connectDB
-      // connectDB(process.env.MONGO_URI);
+      connectDB(process.env.MONGO_URI);
      //console.log(process.env.MONGO_URI)
       const  server = app.listen(PORT,console.log(`server is runing on port::${PORT}...`));
       process.on('unhandledRejection',err=>{ console.log("ERROR::",err); server.close(()=>process.exit(1))});
